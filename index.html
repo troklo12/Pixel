@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineVerde — Онлайн-кинотеатр</title>
+  <meta name="description" content="CineVerde — лучший онлайн-кинотеатр. Смотрите фильмы онлайн в высоком качестве." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ HEADER ═══════════════════════════════ -->
+<header class="header">
+  <div class="logo" onclick="showPage('home')">
+    <span class="logo-icon">🎬</span>
+    Cine<span>Verde</span>
+  </div>
+
+  <nav class="nav" id="mobile-nav">
+    <a class="nav-link active" data-page="home">Фильмы</a>
+    <a class="nav-link" data-page="home">Новинки</a>
+    <a class="nav-link" data-page="home">Подписка</a>
+  </nav>
+
+  <div class="nav-actions">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Поиск фильмов..." />
+    </div>
+    <div id="nav-auth-area" style="display:flex;gap:0.75rem;align-items:center;">
+      <button class="btn btn-outline" onclick="showPage('login')">Войти</button>
+      <button class="btn btn-primary" onclick="showPage('register')">Регистрация</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════ HOME PAGE ════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <div class="badge-dot"></div>
+          Новинки каждую неделю
+        </div>
+        <h1 class="hero-title">
+          КИНО<br>ДЛЯ<br><em>ТЕБЯ</em>
+        </h1>
+        <p class="hero-subtitle">
+          Тысячи фильмов в высоком качестве. Смотри где угодно, когда угодно — без рекламы и ограничений.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-large" onclick="document.getElementById('movies-section').scrollIntoView({behavior:'smooth'})">
+            ▶ Смотреть сейчас
+          </button>
+          <button class="btn btn-outline btn-large" onclick="showPage('register')">
+            Попробовать бесплатно
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">8K+</span><span class="stat-label">Фильмов</span></div>
+          <div class="stat"><span class="stat-num">4K</span><span class="stat-label">Качество</span></div>
+          <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Жанров</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-cards-stack">
+          <div class="hero-card-bg"></div>
+          <div class="hero-card-bg"></div>
+          <div class="hero-card-main">
+            <div class="hero-poster-img">🚀</div>
+            <div class="hero-card-info">
+              <h4>Межзвёздный рубеж</h4>
+              <p>Фантастика · 2024</p>
+              <div class="rating-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Banner -->
+  <div class="featured-banner" id="movies-section" style="margin-top:2rem;">
+    <div class="featured-info">
+      <div class="featured-tag">🔥 Хит недели</div>
+      <h2 class="featured-title">Великий замысел</h2>
+      <p class="featured-desc">Знаменитый архитектор берётся за последний проект, который должен стать его наследием. Грандиозная история о творчестве и цене успеха.</p>
+      <div class="featured-actions">
+        <button class="btn btn-primary btn-large" onclick="openMovie(6)">▶ Подробнее</button>
+        <button class="btn btn-ghost btn-large" onclick="openTicketModal(6)">🎟️ Билет</button>
+      </div>
+    </div>
+    <div class="featured-visual">🎭</div>
+  </div>
+
+  <!-- Movies Section -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Все <span>фильмы</span></h2>
+      <a class="section-link">Смотреть все →</a>
+    </div>
+    <div class="genre-filters" id="genre-filters"></div>
+    <div class="movies-grid" id="movies-grid"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">🎬 Cine<span>Verde</span></div>
+        <p>Лучший онлайн-кинотеатр с широкой библиотекой фильмов и сериалов. Смотрите в высоком качестве без ограничений.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Кинотеатр</h4>
+        <ul>
+          <li>Фильмы</li>
+          <li>Сериалы</li>
+          <li>Новинки</li>
+          <li>Топ-100</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Поддержка</h4>
+        <ul>
+          <li>FAQ</li>
+          <li>Связаться с нами</li>
+          <li>Качество видео</li>
+          <li>Устройства</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Компания</h4>
+        <ul>
+          <li>О нас</li>
+          <li>Пресса</li>
+          <li>Карьера</li>
+          <li>Правила</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2024 <span>CineVerde</span>. Все права защищены.</div>
+      <div>Политика конфиденциальности · Условия использования</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════ MOVIE DETAIL ═════════════════════════ -->
+<div id="page-movie-detail" class="page">
+  <div id="movie-detail-content"></div>
+</div>
+
+<!-- ═══════════════════════════════════ REGISTER PAGE ═══════════════════════ -->
+<div id="page-register" class="page">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="logo-text">🎬 CineVerde</div>
+      </div>
+      <h2 class="auth-title">Создать аккаунт</h2>
+      <p class="auth-subtitle">Присоединяйтесь и смотрите лучшее кино</p>
+
+      <div class="alert alert-success" id="reg-success-alert">
+        <span class="alert-icon">✅</span>
+        <div>
+          <strong>Регистрация прошла успешно!</strong><br>
+          Теперь вы можете <a onclick="showPage('login')" style="cursor:pointer;color:var(--green-bright);font-weight:600;">войти в аккаунт</a>.
+        </div>
+      </div>
+
+      <form id="form-register" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="reg-username">Имя пользователя</label>
+          <input class="form-input" type="text" id="reg-username" placeholder="Введите имя" autocomplete="username" />
+          <div class="form-error" id="reg-username-error"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-email">Электронная почта</label>
+          <input class="form-input" type="email" id="reg-email" placeholder="your@email.com" autocomplete="email" />
+          <div class="form-error" id="reg-email-error"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-password">Пароль</label>
+          <div class="password-wrap">
+            <input class="form-input" type="password" id="reg-password" placeholder="Не менее 6 символов" autocomplete="new-password" />
+            <button type="button" class="password-toggle">👁️</button>
+          </div>
+          <div class="form-error" id="reg-password-error"></div>
+          <div class="form-hint">Минимум 6 символов</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-confirm">Подтверждение пароля</label>
+          <div class="password-wrap">
+            <input class="form-input" type="password" id="reg-confirm" placeholder="Повторите пароль" autocomplete="new-password" />
+            <button type="button" class="password-toggle">👁️</button>
+          </div>
+          <div class="form-error" id="reg-confirm-error"></div>
+        </div>
+        <div class="form-group">
+          <div class="form-checkbox">
+            <input type="checkbox" id="reg-agree" />
+            <label for="reg-agree">
+              Я соглашаюсь с <a href="#" onclick="return false;">условиями использования</a> и <a href="#" onclick="return false;">политикой конфиденциальности</a>
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-large" style="width:100%;margin-top:0.5rem;">
+          Зарегистрироваться
+        </button>
+      </form>
+
+      <div class="auth-divider"><span>или войдите через</span></div>
+      <div style="display:flex;gap:0.75rem;">
+        <button class="btn btn-ghost" style="flex:1;" onclick="showToast('Социальные сети пока недоступны','info')">Google</button>
+        <button class="btn btn-ghost" style="flex:1;" onclick="showToast('Социальные сети пока недоступны','info')">VK</button>
+      </div>
+      <div class="auth-footer">
+        Уже есть аккаунт? <a onclick="showPage('login')">Войти</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ LOGIN PAGE ══════════════════════════ -->
+<div id="page-login" class="page">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="logo-text">🎬 CineVerde</div>
+      </div>
+      <h2 class="auth-title">Добро пожаловать</h2>
+      <p class="auth-subtitle">Войдите в свой аккаунт</p>
+
+      <div class="alert alert-error" id="login-error-alert">
+        <span class="alert-icon">❌</span>
+        <div>Неверный email или пароль. Пожалуйста, попробуйте ещё раз.</div>
+      </div>
+
+      <form id="form-login" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="login-email">Электронная почта</label>
+          <input class="form-input" type="email" id="login-email" placeholder="your@email.com" autocomplete="email" />
+          <div class="form-error" id="login-email-error"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Пароль</label>
+          <div class="password-wrap">
+            <input class="form-input" type="password" id="login-password" placeholder="Введите пароль" autocomplete="current-password" />
+            <button type="button" class="password-toggle">👁️</button>
+          </div>
+          <div class="form-error" id="login-password-error"></div>
+        </div>
+        <div style="text-align:right;margin-bottom:1.25rem;">
+          <a onclick="showPage('reset')" style="font-size:0.82rem;color:var(--green-bright);cursor:pointer;">Забыли пароль?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-large" style="width:100%;">
+          Войти
+        </button>
+      </form>
+
+      <div class="auth-divider"><span>или войдите через</span></div>
+      <div style="display:flex;gap:0.75rem;">
+        <button class="btn btn-ghost" style="flex:1;" onclick="showToast('Социальные сети пока недоступны','info')">Google</button>
+        <button class="btn btn-ghost" style="flex:1;" onclick="showToast('Социальные сети пока недоступны','info')">VK</button>
+      </div>
+      <div class="auth-footer">
+        Нет аккаунта? <a onclick="showPage('register')">Зарегистрироваться</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ RESET PAGE ══════════════════════════ -->
+<div id="page-reset" class="page">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="logo-text">🎬 CineVerde</div>
+      </div>
+      <h2 class="auth-title">Сброс пароля</h2>
+      <p class="auth-subtitle">Введите email и мы отправим вам инструкцию</p>
+
+      <div class="alert alert-info" id="reset-success-alert">
+        <span class="alert-icon">📧</span>
+        <div>
+          <strong>Письмо отправлено!</strong><br>
+          Проверьте вашу почту и следуйте инструкциям для сброса пароля. Письмо может прийти в течение нескольких минут.
+        </div>
+      </div>
+
+      <form id="form-reset" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="reset-email">Электронная почта</label>
+          <input class="form-input" type="email" id="reset-email" placeholder="your@email.com" autocomplete="email" />
+          <div class="form-error" id="reset-email-error"></div>
+          <div class="form-hint">Ссылка для сброса будет активна 24 часа</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-large" style="width:100%;margin-top:0.5rem;">
+          Сбросить пароль
+        </button>
+      </form>
+
+      <div class="auth-footer" style="margin-top:1.5rem;">
+        <a onclick="showPage('login')">← Вернуться к входу</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ MODALS ══════════════════════════════ -->
+
+<!-- Trailer Modal -->
+<div class="modal-overlay" id="trailer-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title">▶ Просмотр трейлера</span>
+      <button class="modal-close" onclick="closeTrailerModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="trailer-placeholder">
+        <button class="play-icon">▶</button>
+        <p>Трейлер будет доступен после релиза</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ticket Modal -->
+<div class="modal-overlay" id="ticket-modal">
+  <div class="modal-content ticket-modal">
+    <div class="modal-header">
+      <span class="modal-title">🎟️ Купить билет</span>
+      <button class="modal-close" onclick="closeTicketModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:0.9rem;color:var(--gray-light);margin-bottom:1.5rem;">
+        Фильм: <strong id="ticket-movie-title" style="color:var(--white)"></strong>
+      </p>
+      <form id="form-ticket" novalidate>
+        <div class="ticket-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="ticket-name">Ваше имя</label>
+              <input class="form-input" type="text" id="ticket-name" placeholder="Иван Иванов" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="ticket-date">Дата сеанса</label>
+              <input class="form-input" type="date" id="ticket-date" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="ticket-time">Время</label>
+              <select class="form-input" id="ticket-time">
+                <option>10:00</option><option>13:30</option><option>16:00</option>
+                <option>19:30</option><option>22:00</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="ticket-seats">Место</label>
+              <input class="form-input" type="text" id="ticket-seats" placeholder="Ряд 5, место 12" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ticket-count">Количество билетов</label>
+            <select class="form-input" id="ticket-count">
+              <option>1 билет — 350 ₽</option>
+              <option>2 билета — 680 ₽</option>
+              <option>3 билета — 990 ₽</option>
+              <option>4 билета — 1280 ₽</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-large" style="width:100%;margin-top:1rem;">
+          Подтвердить покупку
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toast-container" class="toast-container"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
