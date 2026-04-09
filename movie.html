@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie — CinéVerde</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top cv-navbar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand cv-logo" href="index.html"><span class="logo-icon">▶</span>CinéVerde</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="movies.html">Movies</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <a href="login.html" class="btn btn-outline-cv">Sign In</a>
+          <a href="register.html" class="btn btn-cv">Join Free</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Movie Hero -->
+  <div id="movieHero" class="movie-detail-hero">
+    <div class="movie-detail-overlay"></div>
+    <div class="container position-relative z-2 pt-5">
+      <div class="row pt-5 mt-3 align-items-end">
+        <div class="col-lg-3 col-md-4 d-none d-md-block">
+          <img id="moviePoster" src="" alt="Poster" class="movie-detail-poster" />
+        </div>
+        <div class="col-lg-9 col-md-8 pb-5 ps-md-5">
+          <a href="movies.html" class="back-link mb-4 d-inline-flex align-items-center gap-2">
+            <i class="bi bi-arrow-left"></i> Back to Movies
+          </a>
+          <div id="movieGenreBadges" class="mb-3"></div>
+          <h1 id="movieTitle" class="movie-detail-title"></h1>
+          <div class="d-flex align-items-center gap-4 mt-3 flex-wrap">
+            <div class="rating-display">
+              <i class="bi bi-star-fill"></i>
+              <span id="movieRating"></span>
+            </div>
+            <span id="movieYear" class="text-muted"></span>
+            <span id="movieDuration" class="text-muted"></span>
+          </div>
+          <p id="movieDesc" class="movie-detail-desc mt-4"></p>
+          <div class="d-flex gap-3 mt-4 flex-wrap">
+            <button class="btn btn-cv btn-lg px-5" onclick="watchNow()">
+              <i class="bi bi-play-fill me-2"></i>Watch Now
+            </button>
+            <button class="btn btn-outline-cv btn-lg" onclick="addToWatchlist()">
+              <i class="bi bi-bookmark-plus me-2"></i>Watchlist
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trailer Section -->
+  <section class="py-5 bg-dark-section">
+    <div class="container">
+      <h3 class="section-title mb-4">Watch Trailer</h3>
+      <div class="trailer-wrapper">
+        <iframe
+          id="trailerFrame"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+          title="Movie Trailer"
+          frameborder="0"
+          allowfullscreen
+          class="trailer-iframe">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- More Info -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-md-8">
+          <h4 class="section-title mb-3">About the Film</h4>
+          <p id="movieLongDesc" class="text-muted lh-lg"></p>
+        </div>
+        <div class="col-md-4">
+          <div class="movie-meta-card">
+            <div class="meta-row"><span class="meta-label">Director</span><span id="movieDirector" class="meta-val"></span></div>
+            <div class="meta-row"><span class="meta-label">Genre</span><span id="movieGenreMeta" class="meta-val"></span></div>
+            <div class="meta-row"><span class="meta-label">Year</span><span id="movieYearMeta" class="meta-val"></span></div>
+            <div class="meta-row"><span class="meta-label">Rating</span><span id="movieRatingMeta" class="meta-val"></span></div>
+            <div class="meta-row"><span class="meta-label">Language</span><span class="meta-val">English</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Watch Now Modal -->
+  <div class="modal fade" id="watchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cv-modal">
+        <div class="modal-body text-center p-5">
+          <div class="modal-big-icon mb-3">🔐</div>
+          <h5 class="modal-title-text">Sign In to Watch</h5>
+          <p class="text-muted mt-2">Create a free account or sign in to enjoy unlimited streaming.</p>
+          <div class="d-flex gap-3 justify-content-center mt-4">
+            <a href="login.html" class="btn btn-cv px-4">Sign In</a>
+            <a href="register.html" class="btn btn-outline-cv px-4">Register Free</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="cv-footer">
+    <div class="container">
+      <div class="row align-items-center py-4">
+        <div class="col-md-4"><a class="cv-logo" href="index.html"><span class="logo-icon">▶</span>CinéVerde</a></div>
+        <div class="col-md-4 text-center"><span class="text-muted small">© 2025 CinéVerde.</span></div>
+        <div class="col-md-4 text-end">
+          <a href="login.html" class="footer-link">Login</a>
+          <a href="register.html" class="footer-link">Register</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

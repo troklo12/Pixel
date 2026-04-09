@@ -1,57 +1,59 @@
-# 🎬 CineVerde — Онлайн-кинотеатр
+# CinéVerde — Premium Online Cinema
 
-Профессиональный сайт онлайн-кинотеатра с современным дизайном на зелёной цветовой схеме.
+A modern, responsive online movie theater website built with HTML, CSS, JavaScript, and Bootstrap.
 
-## 📋 Страницы
+## 🎬 Features
 
-- **Главная** — Hero-секция, каталог фильмов с фильтрацией по жанрам, поиск
-- **Страница фильма** — Постер, описание, жанр, год, рейтинг, трейлер, покупка билета
-- **Регистрация** — Форма с валидацией, уведомление об успехе
-- **Вход** — Авторизация с локальным хранилищем
-- **Сброс пароля** — Форма с уведомлением
+- **Homepage** — Hero section, movie search, featured films, editor's picks, features overview
+- **Movies Page** — Full catalog with genre filtering and real-time search
+- **Movie Detail Page** — Full description, trailer embed, rating, metadata, watch prompt
+- **Registration Form** — Validated form with password strength indicator
+- **Login Form** — Email/password validation with show/hide password toggle
+- **Password Reset** — Two-step email reset flow
 
-## 🚀 Запуск
+## 🎨 Design
 
-Просто откройте `index.html` в браузере — никаких зависимостей не требуется.
+- **Main colors:** Green (`#1db954`) and its shades
+- **Secondary colors:** Dark gray and black
+- **Fonts:** Cormorant Garamond (display) + DM Sans (body)
+- **Style:** Modern dark cinema aesthetic, minimalist and elegant
 
-## 🌐 Развёртывание на GitHub Pages
+## 🚀 Deploy to GitHub Pages
 
-1. Создайте репозиторий на GitHub
-2. Загрузите все файлы:
-   ```
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/USERNAME/REPO.git
-   git push -u origin main
-   ```
-3. В настройках репозитория → Pages → выберите ветку `main`, папку `/ (root)`
-4. Сайт будет доступен по адресу: `https://USERNAME.github.io/REPO/`
+1. Create a new GitHub repository (e.g. `cineverde`)
+2. Upload all project files to the repository root
+3. Go to **Settings → Pages**
+4. Set **Source** to `Deploy from a branch` → `main` → `/ (root)`
+5. Your site will be live at: `https://yourusername.github.io/cineverde/`
 
-## 📁 Структура файлов
+## 📁 Project Structure
 
 ```
-/
-├── index.html          # Основная страница
-├── css/
-│   └── style.css       # Все стили
-├── js/
-│   └── app.js          # Вся логика
+cineverde/
+├── index.html       # Homepage
+├── movies.html      # All movies listing
+├── movie.html       # Individual movie detail
+├── login.html       # Sign in form
+├── register.html    # Registration form
+├── reset.html       # Password reset form
+├── style.css        # Custom stylesheet
+├── script.js        # All JavaScript functionality
 └── README.md
 ```
 
-## ✨ Технологии
+## 🛠️ Technology Stack
 
-- HTML5, CSS3 (CSS-переменные, Grid, Flexbox, анимации)
-- Vanilla JavaScript (без фреймворков)
-- LocalStorage для хранения пользователей
-- Google Fonts (Bebas Neue, Montserrat, Playfair Display)
-- Адаптивный дизайн (медиа-запросы)
+- HTML5
+- CSS3 (custom variables, animations, responsive grid)
+- JavaScript (ES6+, vanilla)
+- Bootstrap 5.3
+- Bootstrap Icons
+- Google Fonts
 
-## 🎨 Дизайн
+## 📱 Responsive
 
-- Основной цвет: зелёный (#00e676, #00c853)
-- Фон: чёрный (#050a07)
-- Вторичные: серый, белый
-- Шрифты: Bebas Neue (заголовки), Montserrat (текст)
+Fully responsive across mobile, tablet, and desktop viewports.
+
+---
+
+© 2025 CinéVerde. All rights reserved.

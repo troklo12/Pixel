@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset Password — CinéVerde</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-body">
+
+  <div class="auth-split">
+    <!-- Left Panel -->
+    <div class="auth-panel-left d-none d-lg-flex">
+      <div class="auth-left-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800&h=1200&fit=crop" alt="Cinema" class="auth-bg-img" />
+      <div class="auth-left-content">
+        <a href="index.html" class="cv-logo"><span class="logo-icon">▶</span>CinéVerde</a>
+        <blockquote class="auth-quote mt-auto">
+          "Every great film should seem new every time you see it."
+          <cite>— Roger Ebert</cite>
+        </blockquote>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="auth-panel-right">
+      <div class="auth-form-container">
+        <div class="auth-mobile-logo d-lg-none mb-4">
+          <a href="index.html" class="cv-logo"><span class="logo-icon">▶</span>CinéVerde</a>
+        </div>
+
+        <a href="login.html" class="back-link mb-4 d-inline-flex align-items-center gap-2">
+          <i class="bi bi-arrow-left"></i> Back to Sign In
+        </a>
+
+        <!-- Step 1: Email -->
+        <div id="step1">
+          <span class="section-label">Account Recovery</span>
+          <h2 class="auth-title mt-1">Reset Password</h2>
+          <p class="text-muted mt-2">Enter your email and we'll send you a reset link.</p>
+
+          <form id="resetForm" class="mt-4" novalidate>
+            <div class="cv-form-group mb-4">
+              <label class="cv-label">Email Address</label>
+              <div class="cv-input-wrapper">
+                <i class="bi bi-envelope cv-input-icon"></i>
+                <input type="email" id="resetEmail" class="cv-input" placeholder="you@example.com" required />
+              </div>
+              <div class="invalid-feedback-cv" id="resetEmailError"></div>
+            </div>
+
+            <button type="submit" class="btn btn-cv w-100 btn-lg">
+              <span class="btn-text"><i class="bi bi-send me-2"></i>Send Reset Link</span>
+              <span class="btn-loader d-none"><i class="bi bi-arrow-repeat spin"></i></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Step 2: Confirmation -->
+        <div id="step2" class="d-none text-center">
+          <div class="success-circle mb-4">
+            <i class="bi bi-envelope-check"></i>
+          </div>
+          <h2 class="auth-title">Check Your Inbox</h2>
+          <p class="text-muted mt-3">
+            We've sent a password reset link to<br />
+            <strong id="confirmedEmail" class="cv-text-green"></strong>
+          </p>
+          <p class="text-muted small mt-3">Didn't receive it? Check your spam folder or
+            <button class="btn-link-style" onclick="resendEmail()">resend the email</button>.
+          </p>
+          <div class="mt-5">
+            <a href="login.html" class="btn btn-cv px-5">Back to Sign In</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Modal -->
+  <div class="modal fade" id="notifyModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cv-modal">
+        <div class="modal-body text-center p-5">
+          <div id="modalIcon" class="modal-big-icon mb-3"></div>
+          <h5 id="modalTitle" class="modal-title-text"></h5>
+          <p id="modalMessage" class="text-muted mt-2"></p>
+          <button type="button" class="btn btn-cv mt-3 px-5" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
